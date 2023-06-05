@@ -37,7 +37,8 @@ class HomePage(Page):
 
     body = StreamField([
             ('title', blocks.TitleBlock()),
-            ('cards', blocks.CardsBlock())
+            ('cards', blocks.CardsBlock()),
+            ('image_and_text', blocks.ImageAndTextBlock())
         ],
         use_json_field=True, null=True, blank=True)
 
