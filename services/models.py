@@ -5,6 +5,8 @@ from wagtail.admin.panels import FieldPanel
 
 
 class ServiceListingPage(Page):
+    subpage_types = ['services.ServicePage']
+    max_count = 1
     template = 'services/service_listing_page.html'
 
     subtitle = models.TextField(
@@ -22,7 +24,7 @@ class ServiceListingPage(Page):
         return context
 
 class ServicePage(Page):
-
+    parent_page_types = ['services.ServiceListingPage']
     template = 'services/service_page.html'
 
     description = models.TextField(

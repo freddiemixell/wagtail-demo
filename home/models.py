@@ -9,6 +9,9 @@ from streams import blocks
 
 
 class HomePage(Page):
+    max_count = 1
+    parent_page_types = ['wagtailcore.Page']
+    subpage_types = ['flex.FlexPage', 'services.ServiceListingPage']
     lead_text = models.CharField(
         max_length=140,
         blank=True,
