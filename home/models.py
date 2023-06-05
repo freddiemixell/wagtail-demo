@@ -44,7 +44,8 @@ class HomePage(Page):
             ('testimonial', SnippetChooserBlock(
                 target_model='testimonials.Testimonial',
                 template='streams/testimonial_block.html'
-            ))
+            )),
+            ('pricing_table', blocks.PricingTableBlock())
         ],
         use_json_field=True, null=True, blank=True)
 
