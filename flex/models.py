@@ -3,6 +3,7 @@ from wagtail.fields import StreamField
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.admin.panels import FieldPanel
 from wagtail import blocks as wagtail_blocks
+from wagtail.images.blocks import ImageChooserBlock
 
 from streams import blocks
 
@@ -21,6 +22,10 @@ class FlexPage(Page):
             ('rich_text', wagtail_blocks.RichTextBlock(
                 template='streams/simple_richtext_block.html',
                 features=['bold', 'italic', 'ol', 'ul', 'link']
+            )),
+            ('large_image', ImageChooserBlock(
+                help_text='This image will be cropped 1200px by 775px',
+                template='streams/large_image_block.html'
             ))
         ],
         use_json_field=True, null=True, blank=True)
