@@ -17,12 +17,12 @@
             <li class="nav-item active">
                 <a
                 class="nav-link"
-                href="{% if item.link_page %}{{item.link_page.url}}{% elif item.link_url %}{{item.link_url}}{% else %}#{% endif %}"
+                href="{{item.link}}"
                 {% if item.open_in_new_tab %}
                 target="_blank"
                 rel="noreferrer"
                 {% endif %}
-                >{{item.link_title}}</a>
+                >{{item.title}}</a>
             </li>
             {% endfor %}
             </ul>
