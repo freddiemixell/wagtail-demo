@@ -1,6 +1,8 @@
 from wagtail import blocks
 from wagtail.images.blocks import ImageChooserBlock
 
+from django import forms
+
 class TitleBlock(blocks.StructBlock):
     """Centered title section block."""
     text = blocks.CharBlock(
@@ -54,11 +56,17 @@ class CardsBlock(blocks.StructBlock):
         icon = 'image'
         label = 'Standard Cards'
 
+class RadioSelectBlock(blocks.ChoiceBlock):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.field.widget = forms.RadioSelect(
+            choices=self.field.widget.choices
+        )
 
 class ImageAndTextBlock(blocks.StructBlock):
 
     image = ImageChooserBlock(help_text='The image will be automagically cropped to 786 by 552px')
-    image_alignment = blocks.ChoiceBlock(
+    image_alignment = RadioSelectBlock(
         choices=(
             ('left', 'Image to the left'),
             ('right', 'Image to the right')
